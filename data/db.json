@@ -1,0 +1,42 @@
+{
+  "tasks": [
+    {
+      "title": "Task 1",
+      "des": "Des",
+      "status": "doing",
+      "id": 1
+    },
+    {
+      "title": "werwer",
+      "des": "werwer",
+      "status": "2",
+      "id": 2
+    },
+    {
+      "title": "werwer",
+      "des": "werwer",
+      "status": "open",
+      "id": 3
+    }
+  ],
+  "boards": [
+    {
+      "title": "drgdfgdfg",
+      "status": "open",
+      "color": "lightgreen",
+      "id": 1
+    },
+    {
+      "title": "werwer",
+      "status": "open",
+      "color": "yellow",
+      "id": 2
+    },
+    {
+      "title": "qwer",
+      "status": "open",
+      "color": "blue",
+      "id": 3
+    }
+  ]
+}

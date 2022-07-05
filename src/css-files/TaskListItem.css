@@ -1,0 +1,26 @@
+.displayed-tasks{
+
+    
+}
+
+.displayed-tasks-card{
+    font-size: 20px;
+    background-color: rgb(246, 238, 238);
+    border-radius: 15px;
+    list-style: none;
+    height: 50px;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.displayed-tasks:hover{
+    /* cursor: pointer; */
+    background-color: rgb(219, 209, 209);
+}
+.displayed-tasks button{
+border-radius: 30px;
+background-color: rgb(222, 142, 142);
+}

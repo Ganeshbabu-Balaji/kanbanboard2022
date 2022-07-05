@@ -1,10 +1,7 @@
-import { CREATE_TASK_ACTION, DELETE_TASK_ACTION, EDIT_TASK_ACTION, CHANGE_STATUS_ACTION } from '../actions/task-tool.actions';
-
+import { CREATE_TASK_ACTION, DELETE_TASK_ACTION, EDIT_TASK_ACTION, CHANGE_STATUS_ACTION, UPLOAD_TASK_ACTION,  FETCH_TASKS_ACTION, FETCH_TASKS_REQUEST_ACTION, FETCH_TASKS_FAILURE_ACTION, FETCH_TASKS_SUCCESS_ACTION , DELETE_TASK_FROM_SERVER_ACTION} from '../actions/task-tool.actions';
 
 
 export const taskToolReducer = (state = [], action) => {
-
-    console.log(state);
 
     switch (action.type) {
         case CREATE_TASK_ACTION:  //Handles Task Creation: Copies the array then adds a new element
@@ -12,8 +9,9 @@ export const taskToolReducer = (state = [], action) => {
                 ...state,
                 {
                     id: Math.max(...state.map(c => c.id), 0) + 1,
+                    title: action.title,
                     des: action.des,
-                    status: 'open',
+                    status: action.status,
                 }]
 
         case DELETE_TASK_ACTION: //Handles Task Deletion
@@ -21,12 +19,11 @@ export const taskToolReducer = (state = [], action) => {
 
         case EDIT_TASK_ACTION: //Handles Task Edit
             return [
-
-
                 ...state.filter(elem => elem.id !== action.id), //Deletes the orginal task then creates a new copy with the changed description
                 {
-                    des: action.des,
                     id: action.id,
+                    title: action.title,
+                    des: action.des,
                     status: action.status
                 },
             ]
@@ -35,13 +32,57 @@ export const taskToolReducer = (state = [], action) => {
             return [
                 ...state.filter(elem => elem.id !== action.id), { //The edit function but changes the task status
                     id: action.id,
+                    title: action.title,
                     des: action.des,
                     status: action.status,
 
                 },
-
             ]
 
+//------------------------------------------Server-------------------------------------------------------//
+        case FETCH_TASKS_ACTION:
+            return action.payload
+            
+        case UPLOAD_TASK_ACTION:
+            return [
+                ...state
+            ]
+
+        case DELETE_TASK_FROM_SERVER_ACTION:
+            return [
+                ...state
+            ]
+
+        case FETCH_TASKS_REQUEST_ACTION:
+                return {
+                    ...state, 
+                    loading: true,
+                    error: null
+                }
+
+        case FETCH_TASKS_SUCCESS_ACTION:
+            return {
+                ...state,
+                loading: false, 
+                tasks: action.payload,
+            }
+        case FETCH_TASKS_FAILURE_ACTION:
+            return [
+                {
+                    des: 'ERROR CONNECTING TO SERVER',
+                    status: 'open',
+                },
+
+                {
+                    des: 'ERROR CONNECTING TO SERVER',
+                    status: 'doing',
+                },
+
+                {
+                    des: 'ERROR CONNECTING TO SERVER',
+                    status: 'done',
+                }
+            ]
 
         default:
             return state;

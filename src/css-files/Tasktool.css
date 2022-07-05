@@ -1,0 +1,60 @@
+
+.header {
+padding-left: 30px;
+background-color: rgb(165, 234, 234);
+height: 50px;
+border-radius: 15px;
+
+}
+
+.create-task {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter';
+}
+
+
+.task-list-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.task-list-item-buttons {
+    display: flex;
+    flex-direction: row;
+    padding-left: 7px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.create-button button{
+    background-color: #87DEB7;
+    border-radius: 10px;
+    border-width: 1px;
+    font-size: 20px;
+    font-family: 'Ubuntu';
+    margin-left: 23px;
+    margin-right: 23px;
+
+
+}
+
+
+/*------------------------------------FORM----------------------------------------------*/
+
+.input-button {
+    border-radius: 5px;
+}
+
+.submit {
+    border-radius: 5px;
+    background-color: #ddb7fc;
+}

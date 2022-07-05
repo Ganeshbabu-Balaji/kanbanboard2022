@@ -1,0 +1,63 @@
+.kanban-section {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 1rem;
+    margin-left: 30px;
+    margin-right: 40px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+
+}
+
+.open-list {
+    background-color: #87DEB7;
+    border-radius: 15px;
+    height: 100%;
+    width: 400px;
+    padding: 1rem;
+
+
+}
+
+.doing-list {
+    background-color: #B787DE;
+    border-radius: 15px;
+    height: 100%;
+    width: 400px;
+    padding: 1rem;
+
+}
+
+.done-list {
+    background-color: #8C3FCA;
+    border-radius: 15px;
+    height: 100%;
+    width: 400px;
+    padding: 1rem;
+
+
+}
+
+.kanban-section-board{
+    height: 500px;
+}
+
+.board-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.board-header button {
+    border-radius: 7px;
+    background-color: azure;
+    border-width: 1px;
+}
+
+.kanban-section-ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}

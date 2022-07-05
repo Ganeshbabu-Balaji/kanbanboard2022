@@ -1,0 +1,19 @@
+.popup-inner-edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.popup-inner-edit button {
+    border-radius: 15px;
+
+}
+
+.popup-inner-edit-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+

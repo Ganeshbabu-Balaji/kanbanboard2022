@@ -1,41 +1,67 @@
 import { bindActionCreators } from "redux";
 import { useDispatch, useSelector } from 'react-redux'
+import React, {useEffect} from 'react'
+import {
+    fetchTasks, 
+    uploadTasks,
+    editTaskOnServer,
+    deleteTaskFromServer,
+    changeTaskStatusOnServer
+} from "../actions/task-tool.actions";
 
-import { createAddTaskAction, createChangeStatusAction, createDeleteTaskAction, createEditTaskAction } from "../actions/task-tool.actions";
+import { TaskTool } from '../TaskToolComponents/TaskTool'
+import { fetchBoards,
+    uploadBoard,
+    editBoardOnServer,
+    deleteBoardFromServer, 
 
-import { TaskTool } from '../components/TaskTool'
+} from "../actions/kanbanActions";
 
 
 export const TaskToolContainer = () => {
 
+//-------------------------------------------------Use Selectors-----------------------------------------------------------------//
     const taskList = useSelector(state => {  //Returns the tasks from the state
-        return state
+        return state.tasks
     });
 
-    const openList = useSelector(state => { //Returns the 'open' tasks from the state
-        return state.filter(elem => elem.status === 'open')
-    })
+    const boardList = useSelector(state =>{
+        return state.boards
+})
+        
 
-    const doingList = useSelector(state => {
-        return state.filter(elem => elem.status === 'doing') //Returns the 'doing' tasks from the state
-    })
 
-    const doneList = useSelector(state => {
-        return state.filter(elem => elem.status === 'done') //Returns the 'done' tasks from the state
-    })
+//---------------------------------------------------Server Stuff---------------------------------------------------//
+    
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+            dispatch(fetchTasks());
+            dispatch(fetchBoards())
+
+        }, [])
+    
+//----------------------------------------------------Action Binding--------------------------------------------------//
 
     const actions = bindActionCreators({ // Assigns functions from 'task-tool.actions.js'
-        onCreate: createAddTaskAction,
-        onDelete: createDeleteTaskAction,
-        onSaveEdit: createEditTaskAction,
-        onChangeStatus: createChangeStatusAction,
+        onCreate: uploadTasks,
+        onDelete: deleteTaskFromServer,
+        onSaveEdit: editTaskOnServer,
+        onChangeStatus: changeTaskStatusOnServer,
+
+        onCreateBoard: uploadBoard,
+        onDeleteBoard: deleteBoardFromServer,
+        onEditBoard: editBoardOnServer,
+
     },
 
         useDispatch(),
     );
 
+    //-------------------------------------------------Return---------------------------------------------------------//
     return ( //Returns TaskTool with the functions and state as parameters
-        <TaskTool taskList={taskList} {...actions} openList={openList} doingList={doingList} doneList={doneList} />
+         <TaskTool taskList={taskList} {...actions}  boardList={boardList}/>
     );
 }
 

@@ -1,50 +1,40 @@
 import { EditTaskListItem } from './EditTaskListItem';
+import { DetailedEditTaskPopup } from './DetailedTaskPopup';
 import { useState, useRef } from 'react'
 import { useDrag } from 'react-dnd';
+import '../css-files/TaskListItem.css'
 
-export const TaskListItem = ({ task, onDelete, onSaveEdit, onChangeStatus }) => {
-
+export const TaskListItem = ({ task, onDelete, onSaveEdit, onChangeStatus, boardList }) => {
+    
     const [editStatus, setEditStatus] = useState(false); //For text box
-
 
     const [{ isDragging }, drag] = useDrag(() => ({  ///Handles drag and drop
         type: 'task', 
-        item: { id: task.id, des: task.des },
+        item: { id: task.id, title: task.title, des: task.des },
         collect: (monitor) => ({ 
             isDragging: !!monitor.isDragging(),
         }),
     }));
 
-    const debugID = () => {
-        console.log('Clicked Element ID is:', task.id)
-    }
-    const toggleEdit = () => {  // Toggles the edit component  (If breaks put ' editStatus ' in parentheses)
-        if (editStatus === false) {
-            setEditStatus(true);
-            console.log('Task is being edited')
-        }
-        else {
-            setEditStatus(false);
-        }
-    }
+
 
     return (
-        <div>
+        <div className='displayed-tasks' ref={drag}>
 
+        <div className='displayed-tasks-card' onClick={() => setEditStatus(true)}>
             {editStatus === false && //Conditionals for edit option (When not editing)
-                <div className='task-list-item' ref={drag} >
-                    <li onClick={() => debugID()}>{task.des}</li>
+                <div className='task-list-item'  >
+                    <li >{task.title}</li>
 
                     {isDragging === false && <div className='task-list-item-buttons' >
                         <button type='button' onClick={() => onDelete(task.id)}>x</button>
-                        <button type='button' onClick={() => toggleEdit(editStatus)}>Edit</button>
                     </div>}
                 </div>
             }
-
+            </div>
             {editStatus === true && //Conditionals for edit option (When editing)
                 <div>
-                    <EditTaskListItem task={task} toggleEdit={toggleEdit} onSaveEdit={onSaveEdit} onChangeStatus={onChangeStatus} />
+                    <DetailedEditTaskPopup task={task} setEditStatus={setEditStatus} onSaveEdit={onSaveEdit} onChangeStatus={onChangeStatus} boardList={boardList} />
                 </div>
             }
         </div>
