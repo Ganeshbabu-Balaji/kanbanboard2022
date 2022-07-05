@@ -7,7 +7,6 @@ import { Provider } from 'react-redux'
 import { TaskToolContainer } from './containers/TaskToolContainer';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { TaskToolContainerNew } from './containers/TaskToolContainerNew';
 
 //console.log('THIS IS THE STORE' + taskToolStore);
 
