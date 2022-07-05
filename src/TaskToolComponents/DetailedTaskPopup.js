@@ -61,27 +61,7 @@ export const DetailedEditTaskPopup = ({ setEditStatus, onSaveEdit, task, onChang
                     </div>
 
                     <div className='popup-inner-edit-body-buttons'>
-                        {/* 
-                        <button
-                            className='changeToOpenButton'
-                            type='button'
-                            onClick={() => onSaveTaskWithChange(task.id, task.title, task.des, 'open')}
-                            style={{ backgroundColor: '#8fff9f ' }}
-                        >
-                            Open
-                        </button>
 
-                        <button
-                            className='changeToDoingButton'
-                            type='button' onClick={() => onSaveTaskWithChange(task.id, task.title, task.des, 'doing')}>
-                            Doing
-                        </button>
-
-                        <button className='changeToDoneButton'
-                            type='button'
-                            onClick={() => onSaveTaskWithChange(task.id, task.title, task.des, 'done')}>
-                            Completed
-                        </button> */}
                     {statusChangeButtons}
 
                     </div>

@@ -82,7 +82,7 @@ export const uploadBoard = (title, status, color) => {
             color: color,
         })
 
-        const response = Axios.post('http://localhost:8000/boards', { title: title, status: status, status: 'open', color: color })
+        const response = Axios.post('http://localhost:8000/boards', { title: title, status: status, status: status, color: color })
 
     }
 

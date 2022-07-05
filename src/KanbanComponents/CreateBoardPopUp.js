@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../css-files/createTaskPopup.css';
 
-export const CreateBoardPopUp = ({ onCreateBoard, trigger, setTrigger, boardList }) => {
+export const CreateBoardPopUp = ({ onCreateBoard, trigger, setTrigger}) => {
 
     const [boardInputTitle, setBoardInputTitle] = useState('')
     const [boardInputStatus, setBoardInputStatus] = useState('')
@@ -44,7 +44,7 @@ export const CreateBoardPopUp = ({ onCreateBoard, trigger, setTrigger, boardList
          
                 </form>
                 <div className='popup-inner-buttons'>
-                    <button className='submit' type='button' style={{ backgroundColor: '#8fff9f' }} onClick={() => handleSubmitTask()}>Create Task</button>
+                    <button className='submit' type='button' style={{ backgroundColor: '#8fff9f' }} onClick={() => handleSubmitTask()}>Create Board</button>
                     <button className='submit' type='button' style={{ backgroundColor: '#FF7F7F ' }} onClick={() => setTrigger(false)}>Cancel</button>
 
                 </div>

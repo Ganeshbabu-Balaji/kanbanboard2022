@@ -1,42 +1,48 @@
 {
   "tasks": [
     {
-      "title": "Task 1",
-      "des": "Des",
-      "status": "doing",
+      "title": "Sample Task 1",
+      "des": "This is a sample descrip.",
+      "status": "SB1",
       "id": 1
     },
     {
-      "title": "werwer",
-      "des": "werwer",
-      "status": "2",
+      "title": "Sample Task 2",
+      "des": "This is a sample descrip.",
+      "status": "SB2",
       "id": 2
-    },
-    {
-      "title": "werwer",
-      "des": "werwer",
-      "status": "open",
-      "id": 3
     }
   ],
   "boards": [
     {
-      "title": "drgdfgdfg",
-      "status": "open",
+      "title": "Sample Board 1",
+      "status": "SB1",
       "color": "lightgreen",
       "id": 1
     },
     {
-      "title": "werwer",
-      "status": "open",
-      "color": "yellow",
+      "title": "Sample Board 2",
+      "status": "SB2",
+      "color": "orange",
       "id": 2
     },
     {
-      "title": "qwer",
-      "status": "open",
-      "color": "blue",
+      "title": "Sample Board 3",
+      "status": "SB3",
+      "color": "violet",
       "id": 3
+    },
+    {
+      "title": "Sample Board 4",
+      "status": "SB4",
+      "color": "purple",
+      "id": 4
+    },
+    {
+      "title": "Sample Board 5",
+      "status": "SB5",
+      "color": "skyblue",
+      "id": 5
     }
   ]
 }
