@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import '../css-files/createTaskPopup.css';
 
-export const EditKanbanListItem = ({ isTitleBeingEdited, toggleEdit, onEditBoard, board, clickedItem }) => {
+export const EditKanbanListItem = ({ isTitleBeingEdited, toggleEdit, onEditBoard, board, clickedItem, projectTitle }) => {
 
     const [changedItem, setChangedItem] = useState('')
     
     const saveBoardHandler = (boardId, title, des, status) => { //Saves the task then switches it back into the original component
         console.log('Board Saved');
-        onEditBoard(boardId, title, des, status);
+        onEditBoard(boardId, title, des, status, projectTitle);
         toggleEdit(false);
     }
 

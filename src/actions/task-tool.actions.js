@@ -17,7 +17,7 @@ export const DELETE_TASK_FROM_SERVER_ACTION = 'DELETE_TASK_FROM_SERVER';
  const JSON_SERVER = 'http://localhost:8000/tasks';
 //Creates the definitions for all the functions
 
-export const createAddTaskAction = (title, des, status) => ({
+export const createAddTaskAction = (title, des, status, projectName) => ({
     type: CREATE_TASK_ACTION,
     title: title,
     des: des,
@@ -30,7 +30,7 @@ export const createDeleteTaskAction = (id) => ({
 
 });
 
-export const createEditTaskAction = (id, title, des, status) => ({
+export const createEditTaskAction = (id, title, des, status, projectName) => ({
     type: EDIT_TASK_ACTION,
     id: id,
     title: title,
@@ -43,7 +43,7 @@ export const createAddTextAction = (text) => ({
     text: text,
 })
 
-export const createChangeStatusAction = (id, title, des, status) => ({
+export const createChangeStatusAction = (id, title, des, status, projectName) => ({
     type: CHANGE_STATUS_ACTION,
     id: id,
     title: title,
@@ -84,7 +84,7 @@ export const fetchTasks = (toggleConnectionStatus) => {
 
 }
 
-export const uploadTasks = (title, des, status) => {
+export const uploadTasks = (title, des, status, projectName) => {
 
 
     return async (dispatch, getState) => {
@@ -95,10 +95,11 @@ export const uploadTasks = (title, des, status) => {
             type: CREATE_TASK_ACTION,
             title: title,
             des: des,
-            status: status
+            status: status,
+            projectName: projectName
         })
 
-        const response = Axios.post('http://localhost:8000/tasks', { title: title, des: des, status: status })
+        const response = Axios.post('http://localhost:8000/tasks', { title: title, des: des, status: status, projectName: projectName})
 
     }
 
@@ -118,7 +119,7 @@ export const deleteTaskFromServer = (id) => {
     }
 }
 
-export const editTaskOnServer = ( id, title, des, status) => {
+export const editTaskOnServer = ( id, title, des, status, projectName) => {
     return async (dispatch, setState) => {
 
         console.log('Task edited on server')
@@ -129,13 +130,14 @@ export const editTaskOnServer = ( id, title, des, status) => {
             id: id,
             des: des,
             status: status,
+            projectName: projectName
         })
-        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status })
+        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status, projectName: projectName })
 
     }
 }
 
-export const changeTaskStatusOnServer = ( id, title, des, status) => {
+export const changeTaskStatusOnServer = ( id, title, des, status, projectName) => {
 
     return async (dispatch, setState) => {
 
@@ -147,8 +149,9 @@ export const changeTaskStatusOnServer = ( id, title, des, status) => {
             id: id,
             des: des,
             status: status,
+            projectName: projectName
         })
-        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status })
+        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status, projectName: projectName })
 
     }
 

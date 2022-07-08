@@ -1,4 +1,6 @@
-
+.layout button {
+    cursor: pointer;
+}
 .header {
 padding-left: 30px;
 background-color: rgb(165, 234, 234);
@@ -9,9 +11,10 @@ border-radius: 15px;
 
 .create-task {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-end;
     font-family: 'Inter';
+    padding-top: 20px;
 }
 
 

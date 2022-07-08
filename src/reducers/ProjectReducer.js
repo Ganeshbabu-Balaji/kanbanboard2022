@@ -1,91 +1,67 @@
-import { CREATE_BOARD_ACTION, 
-    DELETE_BOARD_ACTION, 
-    EDIT_BOARD_ACTION, 
-    UPLOAD_BOARD_ACTION, 
-     FETCH_BOARDS_ACTION, 
-     FETCH_BOARDS_REQUEST_ACTION, 
-     FETCH_BOARDS_FAILURE_ACTION, 
-     FETCH_BOARDS_SUCCESS_ACTION , 
-     DELETE_BOARD_FROM_SERVER_ACTION} from '../actions/kanbanActions'
+import { CREATE_PROJECT_ACTION, 
+    DELETE_PROJECT_ACTION, 
+    EDIT_PROJECT_ACTION, 
+    UPLOAD_PROJECT_ACTION, 
+     FETCH_PROJECTS_ACTION, 
+     FETCH_PROJECTS_REQUEST_ACTION, 
+     FETCH_PROJECTS_FAILURE_ACTION, 
+     FETCH_PROJECTS_SUCCESS_ACTION , 
+     DELETE_PROJECT_FROM_SERVER_ACTION} from '../actions/projectActions'
 
-const initalBoards = [
-    {
-        id: 1,
-        title: 'Open',
-        status: 'open',
-        color: '#87DEB7'
-    },
-    {
-        id: 2,
-        title: 'Doing',
-        status: 'doing',
-        color: '#B787DE'
-    },
-    {
-        id: 3,
-        title: 'Done',
-        status: 'done',
-        color: '#8C3FCA'
-    },
-]
-export const kanbanReducer = (state = [], action) => {
 
+export const projectReducer = (state = [], action) => {
     switch (action.type) {
-        case CREATE_BOARD_ACTION:  
+        case CREATE_PROJECT_ACTION:  
             return [
                 ...state,
                 {
                     id: Math.max(...state.map(c => c.id), 0) + 1,
                     title: action.title,
-                    status: action.status,
                     color: action.color,
-                    projectName: action.projectName
                 }]
 
-        case DELETE_BOARD_ACTION:
+        case DELETE_PROJECT_ACTION:
             return state.filter(elem => elem.id !== action.id); 
 
-        case EDIT_BOARD_ACTION: 
+        case EDIT_PROJECT_ACTION: 
             return [
                 ...state.filter(elem => elem.id !== action.id), 
                 {
                     id: action.id,
                     title: action.title,
-                    status: action.status,
                     color: action.color,
-                    projectName: action.projectName
                 },
             ]
 
 
 //------------------------------------------Server-------------------------------------------------------//
-        case FETCH_BOARDS_ACTION:
+        case FETCH_PROJECTS_ACTION:
             return action.payload
             
-        case UPLOAD_BOARD_ACTION:
+        case UPLOAD_PROJECT_ACTION:
             return [
                 ...state
             ]
 
-        case DELETE_BOARD_FROM_SERVER_ACTION:
+        case DELETE_PROJECT_FROM_SERVER_ACTION:
             return [
                 ...state
             ]
 
-        case FETCH_BOARDS_REQUEST_ACTION:
+        case FETCH_PROJECTS_REQUEST_ACTION:
                 return {
                     ...state, 
                     loading: true,
                     error: null
                 }
 
-        case FETCH_BOARDS_SUCCESS_ACTION:
+        case FETCH_PROJECTS_SUCCESS_ACTION:
             return {
                 ...state,
                 loading: false, 
-                boards: action.payload,
+                projects: action.payload,
             }
-        case FETCH_BOARDS_FAILURE_ACTION:
+        case FETCH_PROJECTS_FAILURE_ACTION:
             return [
                 {
                     des: 'ERROR CONNECTING TO SERVER',

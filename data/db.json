@@ -1,48 +1,97 @@
 {
   "tasks": [
     {
-      "title": "Sample Task 1",
-      "des": "This is a sample descrip.",
+      "title": "Create UI",
+      "des": "Create a basic UI",
       "status": "SB1",
+      "projectName": "Make an app",
       "id": 1
     },
     {
-      "title": "Sample Task 2",
-      "des": "This is a sample descrip.",
-      "status": "SB2",
+      "title": "Create Plan",
+      "des": "Create the plan for the app",
+      "status": "completed",
+      "projectName": "Make an app",
       "id": 2
+    },
+    {
+      "title": "Obtain Funding",
+      "des": "Obtain funding for the app development",
+      "status": "wer",
+      "projectName": "Make an app",
+      "id": 3
+    },
+    {
+      "title": "Check with Customer",
+      "des": "Check with the customer about requirements",
+      "status": "wer",
+      "projectName": "Make an app",
+      "id": 4
+    },
+    {
+      "title": "Test Task 1",
+      "des": "Test Task 1",
+      "status": "TB1",
+      "projectName": "Test",
+      "id": 5
+    },
+    {
+      "title": "Test Task 2",
+      "des": "Test Task 2",
+      "status": "TB2",
+      "projectName": "Test",
+      "id": 6
     }
   ],
   "boards": [
     {
-      "title": "Sample Board 1",
+      "title": "Open Items",
       "status": "SB1",
       "color": "lightgreen",
+      "projectName": "Make an app",
       "id": 1
     },
     {
-      "title": "Sample Board 2",
-      "status": "SB2",
-      "color": "orange",
-      "id": 2
-    },
-    {
-      "title": "Sample Board 3",
-      "status": "SB3",
-      "color": "violet",
-      "id": 3
-    },
-    {
-      "title": "Sample Board 4",
-      "status": "SB4",
-      "color": "purple",
+      "title": "In Progress",
+      "status": "wer",
+      "color": "lightseagreen",
+      "projectName": "Make an app",
       "id": 4
     },
     {
-      "title": "Sample Board 5",
-      "status": "SB5",
-      "color": "skyblue",
-      "id": 5
+      "title": "Test Board 1",
+      "status": "TB1",
+      "color": "NavajoWhite",
+      "projectName": "Test",
+      "id": 6
+    },
+    {
+      "title": "Test Board 2",
+      "status": "TB2",
+      "color": "Palegreen",
+      "projectName": "Test",
+      "id": 7
+    },
+    {
+      "title": "Completed",
+      "status": "completed",
+      "color": "orange",
+      "projectName": "Make an app",
+      "id": 8
+    }
+  ],
+  "projects": [
+    {
+      "title": "Test",
+      "des": "Test",
+      "color": "orange",
+      "id": 1
+    },
+    {
+      "title": "Make an app",
+      "des": "app",
+      "color": "lightgreen",
+      "id": 2
     }
   ]
 }

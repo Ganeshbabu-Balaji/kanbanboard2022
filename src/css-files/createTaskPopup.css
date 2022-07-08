@@ -101,3 +101,35 @@
     flex-direction: column;
     
 }
+
+/* Projects */
+
+
+
+.project-popup-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 35px;
+
+    height: 150px
+}
+
+.project-popup-inner-buttons{
+    margin-bottom: 35px;
+}
+
+.project-popup-inner-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+.project-popup-inner-header button {
+    margin-top: 65px;
+    margin-left: 490px;
+}
+.project-popup-inner-buttons {
+    margin-bottom: 75px;
+    margin-top: 35px;
+}

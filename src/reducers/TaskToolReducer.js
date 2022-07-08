@@ -2,7 +2,6 @@ import { CREATE_TASK_ACTION, DELETE_TASK_ACTION, EDIT_TASK_ACTION, CHANGE_STATUS
 
 
 export const taskToolReducer = (state = [], action) => {
-
     switch (action.type) {
         case CREATE_TASK_ACTION:  //Handles Task Creation: Copies the array then adds a new element
             return [
@@ -12,6 +11,7 @@ export const taskToolReducer = (state = [], action) => {
                     title: action.title,
                     des: action.des,
                     status: action.status,
+                    projectName: action.projectName
                 }]
 
         case DELETE_TASK_ACTION: //Handles Task Deletion
@@ -24,7 +24,8 @@ export const taskToolReducer = (state = [], action) => {
                     id: action.id,
                     title: action.title,
                     des: action.des,
-                    status: action.status
+                    status: action.status,
+                    projectName: action.projectName
                 },
             ]
 
@@ -35,6 +36,7 @@ export const taskToolReducer = (state = [], action) => {
                     title: action.title,
                     des: action.des,
                     status: action.status,
+                    projectName: action.projectName
 
                 },
             ]

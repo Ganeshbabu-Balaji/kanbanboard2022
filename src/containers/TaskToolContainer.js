@@ -1,8 +1,8 @@
 import { bindActionCreators } from "redux";
 import { useDispatch, useSelector } from 'react-redux'
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import {
-    fetchTasks, 
+    fetchTasks,
     uploadTasks,
     editTaskOnServer,
     deleteTaskFromServer,
@@ -10,39 +10,41 @@ import {
 } from "../actions/task-tool.actions";
 
 import { TaskTool } from '../TaskToolComponents/TaskTool'
-import { fetchBoards,
+import {
+    fetchBoards,
     uploadBoard,
     editBoardOnServer,
-    deleteBoardFromServer, 
+    deleteBoardFromServer,
 
 } from "../actions/kanbanActions";
 
 
-export const TaskToolContainer = () => {
+export const TaskToolContainer = ({ projectTitle }) => {
 
-//-------------------------------------------------Use Selectors-----------------------------------------------------------------//
+    //-------------------------------------------------Use Selectors-----------------------------------------------------------------//
     const taskList = useSelector(state => {  //Returns the tasks from the state
         return state.tasks
     });
 
-    const boardList = useSelector(state =>{
+    const boardList = useSelector(state => {
         return state.boards
-})
-        
+    })
 
+    const taskListFilteredByProject = taskList.filter(elem => elem.projectName === projectTitle);
+    const boardListFilteredByProject = boardList.filter(elem => elem.projectName === projectTitle);
 
-//---------------------------------------------------Server Stuff---------------------------------------------------//
-    
+    //---------------------------------------------------Server Stuff---------------------------------------------------//
+
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-            dispatch(fetchTasks());
-            dispatch(fetchBoards())
+        dispatch(fetchTasks());
+        dispatch(fetchBoards())
 
-        }, [])
-    
-//----------------------------------------------------Action Binding--------------------------------------------------//
+    }, [])
+
+    //----------------------------------------------------Action Binding--------------------------------------------------//
 
     const actions = bindActionCreators({ // Assigns functions from 'task-tool.actions.js'
         onCreate: uploadTasks,
@@ -61,7 +63,11 @@ export const TaskToolContainer = () => {
 
     //-------------------------------------------------Return---------------------------------------------------------//
     return ( //Returns TaskTool with the functions and state as parameters
-         <TaskTool taskList={taskList} {...actions}  boardList={boardList}/>
+        <TaskTool taskList={taskListFilteredByProject}
+            {...actions}
+            boardList={boardListFilteredByProject}
+            projectTitle={projectTitle}
+        />
     );
 }
 

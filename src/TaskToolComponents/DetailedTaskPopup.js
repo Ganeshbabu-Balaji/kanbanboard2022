@@ -3,14 +3,15 @@ import { useState } from 'react';
 import { EditTaskListItem } from './EditTaskListItem';
 import '../css-files/createTaskPopup.css';
 
-export const DetailedEditTaskPopup = ({ setEditStatus, onSaveEdit, task, onChangeStatus, boardList }) => {
+export const DetailedEditTaskPopup = ({ setEditStatus, onSaveEdit, task, onChangeStatus, boardList, projectTitle }) => {
 
     const [isTitleBeingEdited, setTitleEditStatus] = useState(false);
     const [isDesBeingEdited, setDesEditStatus] = useState(false);
 
     const onSaveTaskWithChange = (id, title, des, newStatus) => { //Same thing as above but for onChangeStatus
-        onChangeStatus(id, title, des, newStatus);
+        onChangeStatus(id, title, des, newStatus, projectTitle);
         setEditStatus(false);
+        console.log(typeof(projectTitle))
     }
     const statusChangeButtons = boardList.map((button) => {
     return <button key={task.id}
@@ -42,14 +43,14 @@ export const DetailedEditTaskPopup = ({ setEditStatus, onSaveEdit, task, onChang
                             </div>
                         }
                         {isTitleBeingEdited == true &&
-                            <EditTaskListItem isTitleBeingEdited={true} toggleEdit={setTitleEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem='Edit Title' />
+                            <EditTaskListItem isTitleBeingEdited={true} toggleEdit={setTitleEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem='Edit Title' projectTitle={projectTitle}/>
                         }
 
                         {isDesBeingEdited == false &&
                             <p onClick={() => setDesEditStatus(true)}>{task.des}</p>
                         }
                         {isDesBeingEdited == true &&
-                            <EditTaskListItem isTitleBeingEdited={false} toggleEdit={setDesEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem='Edit Description' />
+                            <EditTaskListItem isTitleBeingEdited={false} toggleEdit={setDesEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem='Edit Description' projectTitle={projectTitle}/>
                         }
                     </div>
 

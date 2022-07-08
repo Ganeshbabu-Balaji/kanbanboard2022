@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../css-files/createTaskPopup.css';
 
-export const CreateBoardPopUp = ({ onCreateBoard, trigger, setTrigger}) => {
+export const CreateBoardPopUp = ({ onCreateBoard, trigger, setTrigger, projectTitle}) => {
 
     const [boardInputTitle, setBoardInputTitle] = useState('')
     const [boardInputStatus, setBoardInputStatus] = useState('')
@@ -9,7 +9,7 @@ export const CreateBoardPopUp = ({ onCreateBoard, trigger, setTrigger}) => {
 
 
     const handleSubmitTask = () => { //Creates a task then resets the input field
-        onCreateBoard(boardInputTitle, boardInputStatus, boardInputColor)
+        onCreateBoard(boardInputTitle, boardInputStatus, boardInputColor, projectTitle)
         setTrigger(false);
         setBoardInputTitle('');
         setBoardInputStatus('');

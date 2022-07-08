@@ -1,0 +1,104 @@
+.layout button {
+    cursor: pointer;
+}
+
+.header {
+    padding-left: 30px;
+    background-color: rgb(165, 234, 234);
+    height: 50px;
+    border-radius: 15px;
+
+}
+
+.create-project {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-family: 'Inter';
+    padding-top: 20px;
+}
+
+
+.task-list-item-buttons {
+    display: flex;
+    flex-direction: row;
+    padding-left: 7px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-button button {
+    background-color: #87DEB7;
+    border-radius: 10px;
+    border-width: 1px;
+    font-size: 20px;
+    font-family: 'Ubuntu';
+    margin-left: 23px;
+    margin-right: 23px;
+
+
+}
+
+
+.project-manager {}
+
+.project-manager button {
+    cursor: pointer;
+}
+
+
+
+.project-manager-body {
+
+    padding-bottom: 50px;
+    padding-top: 30px;
+    margin-left: 30px;
+    margin-right: 40px;
+
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 1rem;
+    row-gap: 50px;
+
+
+
+}
+
+.project-card {
+    border-radius: 15px;
+    height: 150px;
+    width: 350px;
+
+
+}
+
+.project-card-header {
+
+    height: 139px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.project-card-header button {
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    display: flex;
+    flex-direction: row;
+    background-color: green;
+    justify-content: flex-end;
+}

@@ -14,11 +14,12 @@ export const DELETE_BOARD_FROM_SERVER_ACTION = 'DELETE_BOARD_FROM_SERVER';
 const JSON_SERVER = 'http://localhost:8000/boards';
 //Creates the definitions for all the functions
 
-export const createAddBoardAction = (title, status, color) => ({
+export const createAddBoardAction = (title, status, color, projectName) => ({
     type: CREATE_BOARD_ACTION,
     title: title,
     status: status,
     color: color,
+    projectName: projectName
 });
 
 export const createDeleteBoardAction = (id) => ({
@@ -27,11 +28,12 @@ export const createDeleteBoardAction = (id) => ({
 
 });
 
-export const createEditBoardAction = (id, title, status) => ({
+export const createEditBoardAction = (id, title, status, projectName) => ({
     type: EDIT_BOARD_ACTION,
     id: id,
     title: title,
-    status: status
+    status: status,
+    projectName: projectName
 })
 
 
@@ -68,7 +70,7 @@ export const fetchBoards = () => {
 
 }
 
-export const uploadBoard = (title, status, color) => {
+export const uploadBoard = (title, status, color, projectName) => {
 
 
     return async (dispatch, getState) => {
@@ -80,9 +82,10 @@ export const uploadBoard = (title, status, color) => {
             title: title,
             status: status,
             color: color,
+            projectName: projectName,
         })
 
-        const response = Axios.post('http://localhost:8000/boards', { title: title, status: status, status: status, color: color })
+        const response = Axios.post('http://localhost:8000/boards', { title: title, status: status, status: status, color: color, projectName: projectName })
 
     }
 
@@ -102,7 +105,7 @@ export const deleteBoardFromServer = (id) => {
     }
 }
 
-export const editBoardOnServer = ( id, title, status, color) => {
+export const editBoardOnServer = ( id, title, status, color, projectName) => {
     return async (dispatch, setState) => {
 
         console.log('Board edited on server')
@@ -113,8 +116,9 @@ export const editBoardOnServer = ( id, title, status, color) => {
             id: id,
             color: color,
             status: status,
+            projectName: projectName,
         })
-        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, status: status, color: color})
+        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, status: status, color: color, projectName: projectName})
 
     }
 }

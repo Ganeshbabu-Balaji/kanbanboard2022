@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import '../css-files/createTaskPopup.css';
 
-export const EditTaskListItem = ({ isTitleBeingEdited, toggleEdit, onSaveEdit, task, clickedItem }) => {
+export const EditTaskListItem = ({ isTitleBeingEdited, toggleEdit, onSaveEdit, task, clickedItem, projectTitle }) => {
 
     const [changedItem, setChangedItem] = useState('')
     const saveTaskHandler = (taskId, title, des, status) => { //Saves the task then switches it back into the original component
         console.log('Task Saved');
-        onSaveEdit(taskId, title, des, status);
+        onSaveEdit(taskId, title, des, status, projectTitle);
         toggleEdit(false);
     }
 

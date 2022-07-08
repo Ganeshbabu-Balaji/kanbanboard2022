@@ -4,7 +4,7 @@ import { useState, useRef } from 'react'
 import { useDrag } from 'react-dnd';
 import '../css-files/TaskListItem.css'
 
-export const TaskListItem = ({ task, onDelete, onSaveEdit, onChangeStatus, boardList }) => {
+export const TaskListItem = ({ task, onDelete, onSaveEdit, onChangeStatus, boardList, projectTitle }) => {
     
     const [editStatus, setEditStatus] = useState(false); //For text box
 
@@ -34,7 +34,7 @@ export const TaskListItem = ({ task, onDelete, onSaveEdit, onChangeStatus, board
             </div>
             {editStatus === true && //Conditionals for edit option (When editing)
                 <div>
-                    <DetailedEditTaskPopup task={task} setEditStatus={setEditStatus} onSaveEdit={onSaveEdit} onChangeStatus={onChangeStatus} boardList={boardList} />
+                    <DetailedEditTaskPopup task={task} setEditStatus={setEditStatus} onSaveEdit={onSaveEdit} onChangeStatus={onChangeStatus} boardList={boardList} projectTitle={projectTitle}/>
                 </div>
             }
         </div>
