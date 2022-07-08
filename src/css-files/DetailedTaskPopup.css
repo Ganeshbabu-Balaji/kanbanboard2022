@@ -1,0 +1,133 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+
+}
+
+.popup-inner1 {
+    position: relative;
+    padding: 32px;
+    width: 30%;
+    height: 70%;
+    background-color: rgb(238, 218, 218);
+
+    /* flex-direction: column; */
+    border-radius: 15px;
+
+}
+
+.popup-inner-taskdetails1 {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+}
+
+.popup-inner-header1 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+
+.popup-inner-header button {
+    font-size: large;
+    margin-right: -60px;
+}
+
+.header-title {
+    width: 400px;
+    font-size: 15px;
+
+}
+
+.popup-inner-body1 {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 70%;
+}
+
+.body-des {
+    width: 100%;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 0px;
+
+}
+
+.body-dates {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    width: 100%;
+}
+
+.body-comments {
+    width: 100%;
+    font-size: 20px;
+    height: 150%;
+
+}
+
+.comments-display {
+    overflow-y: scroll;
+    height: 300px;
+    flex-direction: column;
+    
+}
+
+
+.comment {
+    line-height: 10px;
+    /* background-color: rgb(243, 243, 243); */
+    height: 30px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comments-form input {
+    width: 80%;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 2%;
+
+}
+.comments-form button{
+    background-color: rgb(39, 212, 56);
+}
+
+.popup-inner-footer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
+
+    font-size: 20px;
+}
+.popup-inner-body-buttons1 {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    
+}

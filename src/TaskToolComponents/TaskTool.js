@@ -18,7 +18,11 @@ export const TaskTool = ({
     boardList,
     onCreateBoard,
     onEditBoard,
-    onDeleteBoard
+    onDeleteBoard,
+    commentList,
+    onCreateComment,
+    onDeleteComment,
+    onEditComment,
 
 }) => {
 
@@ -45,6 +49,10 @@ export const TaskTool = ({
                 onChangeStatus={onChangeStatus}
                 boardList={boardList}
                 onCreate={onCreate}
+                commentList={commentList}
+                onCreateComment={onCreateComment}
+                onDeleteComment={onDeleteComment}
+                onEditComment={onEditComment}
             />
         );
 
@@ -59,7 +67,7 @@ export const TaskTool = ({
 
             <div className='create-task'>
                 <div className='create-button'> {/* Change div to form if not working */}
-                    <button onClick={() => setButtonPopupB(true)}>Create a new board</button>
+                    <button onClick={() => setButtonPopupB(true)}>Create Swimlane</button>
 
                 </div> {/* Change div to form if not working */}
 

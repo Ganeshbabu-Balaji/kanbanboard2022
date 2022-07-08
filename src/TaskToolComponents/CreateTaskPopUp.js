@@ -2,41 +2,51 @@ import { useState } from 'react'
 import '../css-files/createTaskPopup.css';
 
 export const CreateTaskPopUp = ({ onCreate, trigger, setTrigger, boardList, sectionName, projectTitle }) => {
-    
+
 
 
     const [taskInputTitle, setTaskInputTitle] = useState('')
     const [taskInputDescription, setTaskInputDescription] = useState('')
+    const [taskInputDeadline, setTaskInputDeadline] = useState('')
 
 
     const handleSubmitTask = () => { //Creates a task then resets the input field
-    if(taskInputTitle.length === 0 && taskInputDescription.length === 0){
-        onCreate('Untitled Task', 'No Description', sectionName, projectTitle );
-        setTaskInputTitle('');
-        setTaskInputDescription('');
-        setTrigger(false);
-    }
-    else if(taskInputTitle.length === 0 ) {
-        onCreate('Untitled Task', sectionName);
-        setTaskInputTitle('');
-        setTaskInputDescription('');
-        setTrigger(false);
-    }
+        if (taskInputTitle.length === 0 && taskInputDescription.length === 0) {
+            onCreate('Untitled Task', 'No Description', sectionName, projectTitle, taskInputDeadline);
 
-    else if (taskInputDescription.length === 0) {
-        onCreate(taskInputTitle, 'No Description', sectionName, projectTitle);
-        setTaskInputTitle('');
-        setTaskInputDescription('');
-        setTrigger(false);
+            setTaskInputTitle('');
+            setTaskInputDescription('');
+            setTaskInputDeadline('');
 
-    }
+            setTrigger(false);
+        }
+        else if (taskInputTitle.length === 0) {
+            onCreate('Untitled Task', sectionName);
+            
+            setTaskInputTitle('');
+            setTaskInputDescription('');
+            setTaskInputDeadline('');
 
-    else{
-        onCreate(taskInputTitle, taskInputDescription, sectionName, projectTitle);
-        setTaskInputTitle('');
-        setTaskInputDescription('');
-        setTrigger(false);
-    }
+            setTrigger(false);
+        }
+
+        else if (taskInputDescription.length === 0) {
+            onCreate(taskInputTitle, 'No Description', sectionName, projectTitle, taskInputDeadline);
+
+            setTaskInputTitle('');
+            setTaskInputDescription('');
+            setTaskInputDeadline('');
+
+            setTrigger(false);
+
+        }
+
+        else {
+            onCreate(taskInputTitle, taskInputDescription, sectionName, projectTitle, taskInputDeadline);
+            setTaskInputTitle('');
+            setTaskInputDescription('');
+            setTrigger(false);
+        }
     }
 
 
@@ -61,7 +71,10 @@ export const CreateTaskPopUp = ({ onCreate, trigger, setTrigger, boardList, sect
                         <p>Enter Description</p>
                         <input className='input-button' type='text' placeholder='Enter description' value={taskInputDescription} onChange={(e) => setTaskInputDescription(e.target.value)} onKeyPress={onEnterButton} />
                     </div>
-
+                    <div className='field'>
+                        <p>Enter Deadline</p>
+                        <input className='input-button' type='text' placeholder='Enter description' value={taskInputDeadline} onChange={(e) => setTaskInputDeadline(e.target.value)} onKeyPress={onEnterButton} />
+                    </div>
                 </form>
                 <div className='popup-inner-buttons'>
                     <button className='submit' type='button' style={{ backgroundColor: '#8fff9f' }} onClick={() => handleSubmitTask()}>Create Task</button>

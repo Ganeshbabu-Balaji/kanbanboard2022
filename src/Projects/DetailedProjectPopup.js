@@ -1,5 +1,5 @@
 import React from 'react'
-import { EditKanbanListItem } from '../KanbanComponents/EditKanbanListItem';
+import { EditProject } from './EditProject';
 import { useState } from 'react';
 
 const DetailedProjectPopup = ({ project, toggle, onDeleteProject, onEditProject }) => {
@@ -19,17 +19,19 @@ const DetailedProjectPopup = ({ project, toggle, onDeleteProject, onEditProject 
           <div className='project-popup-inner-header'>
             <button onClick={() => toggle(false)}>x</button>
           </div>
+          
+          <h1 onClick={() => setTitleEditStatus(true)}>{project.title}</h1>
 
-          {isTitleBeingEdited === false &&
+          {/* {isTitleBeingEdited === false &&
             <>
               <h1 onClick={() => setTitleEditStatus(true)}>{project.title}</h1>
             </>
           }
           {isTitleBeingEdited === true &&
             <>
-              <EditKanbanListItem toggleEdit={setTitleEditStatus} onEditProject={onEditProject} />
+              <EditProject isTitleBeingEdited={true} toggleEdit={setTitleEditStatus} onEditProject={onEditProject} project={project}/>
             </>
-          }
+          } */}
 
           {isDesBeingEdited === false &&
 
@@ -37,7 +39,7 @@ const DetailedProjectPopup = ({ project, toggle, onDeleteProject, onEditProject 
           }
           {isDesBeingEdited === true &&
             <>
-              <EditKanbanListItem toggleEdit={setDesEditStatus} onEditProject={onEditProject} />
+              <EditProject isTitleBeingEdited={false} toggleEdit={setDesEditStatus} onEditProject={onEditProject} project={project}/>
             </>
           }
 

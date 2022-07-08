@@ -1,6 +1,9 @@
 import { CREATE_TASK_ACTION, DELETE_TASK_ACTION, EDIT_TASK_ACTION, CHANGE_STATUS_ACTION, UPLOAD_TASK_ACTION,  FETCH_TASKS_ACTION, FETCH_TASKS_REQUEST_ACTION, FETCH_TASKS_FAILURE_ACTION, FETCH_TASKS_SUCCESS_ACTION , DELETE_TASK_FROM_SERVER_ACTION} from '../actions/task-tool.actions';
 
 
+const currentDate = new Date();
+const date = `${currentDate.getDate()}/${currentDate.getMonth()+1}/${currentDate.getFullYear()}`;
+
 export const taskToolReducer = (state = [], action) => {
     switch (action.type) {
         case CREATE_TASK_ACTION:  //Handles Task Creation: Copies the array then adds a new element
@@ -11,7 +14,9 @@ export const taskToolReducer = (state = [], action) => {
                     title: action.title,
                     des: action.des,
                     status: action.status,
-                    projectName: action.projectName
+                    projectName: action.projectName,
+                    date: date,
+                    deadline: action.deadline
                 }]
 
         case DELETE_TASK_ACTION: //Handles Task Deletion

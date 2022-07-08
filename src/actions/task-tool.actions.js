@@ -14,14 +14,18 @@ export const FETCH_TASKS_FAILURE_ACTION = 'FETCH_TASKS_FAILURE';
 export const FETCH_TASKS_ACTION = 'FETCH_TASKS';
 export const DELETE_TASK_FROM_SERVER_ACTION = 'DELETE_TASK_FROM_SERVER';
 
- const JSON_SERVER = 'http://localhost:8000/tasks';
+const JSON_SERVER = 'http://localhost:8000/tasks';
+const currentDate = new Date();
+const date = `${currentDate.getDate()}/${currentDate.getMonth()+1}/${currentDate.getFullYear()}`;
+
 //Creates the definitions for all the functions
 
-export const createAddTaskAction = (title, des, status, projectName) => ({
+export const createAddTaskAction = (title, des, status, projectName, deadline) => ({
     type: CREATE_TASK_ACTION,
     title: title,
     des: des,
     status: status,
+    projectName: projectName
 });
 
 export const createDeleteTaskAction = (id) => ({
@@ -30,12 +34,13 @@ export const createDeleteTaskAction = (id) => ({
 
 });
 
-export const createEditTaskAction = (id, title, des, status, projectName) => ({
+export const createEditTaskAction = (id, title, des, status, projectName, deadline) => ({
     type: EDIT_TASK_ACTION,
     id: id,
     title: title,
     des: des,
-    status: status
+    status: status,
+    projectName: projectName
 })
 
 export const createAddTextAction = (text) => ({
@@ -43,12 +48,13 @@ export const createAddTextAction = (text) => ({
     text: text,
 })
 
-export const createChangeStatusAction = (id, title, des, status, projectName) => ({
+export const createChangeStatusAction = (id, title, des, status, projectName, deadline) => ({
     type: CHANGE_STATUS_ACTION,
     id: id,
     title: title,
     des: des,
     status: status,
+    projectName: projectName
 })
 
 
@@ -61,7 +67,7 @@ export const fetchTasks = (toggleConnectionStatus) => {
     return async (dispatch, getState) => {
         console.log('Fetching Tasks from', JSON_SERVER)
 
-        try{
+        try {
             const response = await Axios.get('http://localhost:8000/tasks')
 
             dispatch({
@@ -72,19 +78,19 @@ export const fetchTasks = (toggleConnectionStatus) => {
 
         }
 
-        catch(error){
+        catch (error) {
             console.log('Failed! Make sure that JSON_SERVER is set to the right value and turned on');
-            
+
             dispatch({
                 type: FETCH_TASKS_FAILURE_ACTION
             })
         }
     }
-    
+
 
 }
 
-export const uploadTasks = (title, des, status, projectName) => {
+export const uploadTasks = (title, des, status, projectName, deadline) => {
 
 
     return async (dispatch, getState) => {
@@ -96,12 +102,21 @@ export const uploadTasks = (title, des, status, projectName) => {
             title: title,
             des: des,
             status: status,
-            projectName: projectName
+            projectName: projectName,
+            deadline: deadline
         })
 
-        const response = Axios.post('http://localhost:8000/tasks', { title: title, des: des, status: status, projectName: projectName})
+        const response = Axios.post('http://localhost:8000/tasks', {
+            title: title,
+            des: des,
+            status: status,
+            projectName: projectName,
+            date: date,
+            deadline: deadline
+        
+    })
 
-    }
+}
 
 }
 export const deleteTaskFromServer = (id) => {
@@ -119,7 +134,7 @@ export const deleteTaskFromServer = (id) => {
     }
 }
 
-export const editTaskOnServer = ( id, title, des, status, projectName) => {
+export const editTaskOnServer = (id, title, des, status, projectName, deadline) => {
     return async (dispatch, setState) => {
 
         console.log('Task edited on server')
@@ -130,14 +145,15 @@ export const editTaskOnServer = ( id, title, des, status, projectName) => {
             id: id,
             des: des,
             status: status,
-            projectName: projectName
+            projectName: projectName,
+            deadline: deadline
         })
-        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status, projectName: projectName })
+        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status, projectName: projectName, deadline: deadline})
 
     }
 }
 
-export const changeTaskStatusOnServer = ( id, title, des, status, projectName) => {
+export const changeTaskStatusOnServer = (id, title, des, status, projectName, deadline) => {
 
     return async (dispatch, setState) => {
 
@@ -149,9 +165,10 @@ export const changeTaskStatusOnServer = ( id, title, des, status, projectName) =
             id: id,
             des: des,
             status: status,
-            projectName: projectName
+            projectName: projectName,
+            deadline: deadline
         })
-        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status, projectName: projectName })
+        const response = Axios.patch(`${JSON_SERVER}/${id}`, { id: id, title: title, des: des, status: status, projectName: projectName, deadline: deadline })
 
     }
 

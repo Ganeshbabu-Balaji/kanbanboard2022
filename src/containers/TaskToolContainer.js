@@ -10,6 +10,7 @@ import {
 } from "../actions/task-tool.actions";
 
 import { TaskTool } from '../TaskToolComponents/TaskTool'
+
 import {
     fetchBoards,
     uploadBoard,
@@ -17,6 +18,14 @@ import {
     deleteBoardFromServer,
 
 } from "../actions/kanbanActions";
+
+import {
+    fetchComments,
+    uploadComment,
+    editCommentOnServer,
+    deleteCommentFromServer,
+
+} from "../actions/commentActions";
 
 
 export const TaskToolContainer = ({ projectTitle }) => {
@@ -30,6 +39,10 @@ export const TaskToolContainer = ({ projectTitle }) => {
         return state.boards
     })
 
+    const commentList = useSelector(state => {
+        return state.comments
+    })
+
     const taskListFilteredByProject = taskList.filter(elem => elem.projectName === projectTitle);
     const boardListFilteredByProject = boardList.filter(elem => elem.projectName === projectTitle);
 
@@ -39,8 +52,9 @@ export const TaskToolContainer = ({ projectTitle }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(fetchBoards());
         dispatch(fetchTasks());
-        dispatch(fetchBoards())
+        dispatch(fetchComments());
 
     }, [])
 
@@ -56,6 +70,9 @@ export const TaskToolContainer = ({ projectTitle }) => {
         onDeleteBoard: deleteBoardFromServer,
         onEditBoard: editBoardOnServer,
 
+        onCreateComment: uploadComment,
+        onDeleteComment: deleteCommentFromServer,
+        onEditComment: editCommentOnServer,
     },
 
         useDispatch(),
@@ -67,6 +84,7 @@ export const TaskToolContainer = ({ projectTitle }) => {
             {...actions}
             boardList={boardListFilteredByProject}
             projectTitle={projectTitle}
+            commentList={commentList}
         />
     );
 }

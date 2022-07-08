@@ -5,19 +5,23 @@ import { TaskListItem } from '../TaskToolComponents/TaskListItem';
 import { DetailedKanbanPopup } from './DetailedKanbanPopup';
 import { CreateTaskPopUp } from '../TaskToolComponents/CreateTaskPopUp';
 
-export const KanbanSection = ({ 
-    listInput, 
-    boardTitle, 
-    onChangeStatus, 
-    sectionName, 
-    onDelete, onSaveEdit, 
-    color, 
-    board, 
-    onEditBoard, 
-    onDeleteBoard, 
-    boardList, 
+export const KanbanSection = ({
+    listInput,
+    boardTitle,
+    onChangeStatus,
+    sectionName,
+    onDelete, onSaveEdit,
+    color,
+    board,
+    onEditBoard,
+    onDeleteBoard,
+    boardList,
     onCreate,
-    projectTitle
+    projectTitle,
+    commentList,
+    onCreateComment,
+    onDeleteComment,
+    onEditComment
 
 }) => {
 
@@ -35,15 +39,20 @@ export const KanbanSection = ({
     const filterdTasksStep2 = [].concat(filterTasksStep1)
         .sort((a, b) => a.id > b.id ? 1 : -1)
         .map((task, i) =>
-            <TaskListItem 
-            key={i} 
-            task={task} 
-            onDelete={onDelete} 
-            onSaveEdit={onSaveEdit} 
-            onChangeStatus={onChangeStatus} 
-            id={i} des={listInput.des} 
-            boardList={boardList} 
-            projectTitle={projectTitle}
+            <TaskListItem
+                key={i}
+                task={task}
+                onDelete={onDelete}
+                onSaveEdit={onSaveEdit}
+                onChangeStatus={onChangeStatus}
+                id={i} 
+                des={listInput.des}
+                boardList={boardList}
+                projectTitle={projectTitle}
+                onCreateComment={onCreateComment}
+                onDeleteComment={onDeleteComment}
+                onEditComment={onEditComment}
+                commentList={commentList}
 
             />
         );
@@ -71,13 +80,13 @@ export const KanbanSection = ({
             <div>
                 {editStatus === true && //Conditionals for edit option (When editing)
                     <div>
-                        <DetailedKanbanPopup board={board} setEditStatus={setEditStatus} onEditBoard={onEditBoard} onDeleteBoard={onDeleteBoard} boardList={filterTasksStep1} projectTitle={projectTitle}/>
+                        <DetailedKanbanPopup board={board} setEditStatus={setEditStatus} onEditBoard={onEditBoard} onDeleteBoard={onDeleteBoard} boardList={filterTasksStep1} projectTitle={projectTitle} />
                     </div>
                 }
             </div>
             <div className='board-footer'>
                 <button onClick={() => setButtonPopup(true)}>Create a new task</button>
-                <CreateTaskPopUp onCreate={onCreate} trigger={buttonPopup} setTrigger={setButtonPopup} sectionName={sectionName} projectTitle={projectTitle}/>
+                <CreateTaskPopUp onCreate={onCreate} trigger={buttonPopup} setTrigger={setButtonPopup} sectionName={sectionName} projectTitle={projectTitle} />
             </div>
         </div>
     );

@@ -4,34 +4,35 @@
       "title": "Create UI",
       "des": "Create a basic UI",
       "status": "SB1",
+      "date": "8/7/2022",
+      "deadline": "12/2/3",
       "projectName": "Make an app",
       "id": 1
     },
     {
       "title": "Create Plan",
-      "des": "Create the plan for the app",
+      "des": "Create the plan for the app and share it with others",
       "status": "completed",
       "projectName": "Make an app",
+      "date": "8/7/2022",
+      "deadline": "12/2/3",
       "id": 2
     },
     {
       "title": "Obtain Funding",
       "des": "Obtain funding for the app development",
-      "status": "wer",
+      "status": "SB1",
+      "date": "8/7/2022",
+      "deadline": "12/2/3",
       "projectName": "Make an app",
       "id": 3
-    },
-    {
-      "title": "Check with Customer",
-      "des": "Check with the customer about requirements",
-      "status": "wer",
-      "projectName": "Make an app",
-      "id": 4
     },
     {
       "title": "Test Task 1",
       "des": "Test Task 1",
       "status": "TB1",
+      "date": "8/7/2022",
+      "deadline": "12/2/3",
       "projectName": "Test",
       "id": 5
     },
@@ -39,8 +40,46 @@
       "title": "Test Task 2",
       "des": "Test Task 2",
       "status": "TB2",
+      "date": "8/7/2022",
+      "deadline": "12/2/3",
       "projectName": "Test",
       "id": 6
+    },
+    {
+      "title": "Check with Customer",
+      "des": "Check with customer",
+      "status": "wer",
+      "projectName": "Make an app",
+      "date": "8/7/2022",
+      "deadline": "12/2/3",
+      "id": 7
+    },
+    {
+      "title": "Untitled Task",
+      "des": "No Description",
+      "status": "wer",
+      "projectName": "Make an app",
+      "date": "8/7/2022",
+      "deadline": "",
+      "id": 8
+    },
+    {
+      "title": "Lunch",
+      "des": "Eat Lunch",
+      "status": "wer",
+      "projectName": "Make an app",
+      "date": "8/7/2022",
+      "deadline": "12/2/3",
+      "id": 9
+    },
+    {
+      "title": "Untitled Task",
+      "des": "No Description",
+      "status": "SB1",
+      "projectName": "Make an app",
+      "date": "8/7/2022",
+      "deadline": "",
+      "id": 10
     }
   ],
   "boards": [
@@ -89,9 +128,16 @@
     },
     {
       "title": "Make an app",
-      "des": "app",
+      "des": "App creation",
       "color": "lightgreen",
       "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "parent": 4,
+      "text": "",
+      "id": 1
     }
   ]
 }
