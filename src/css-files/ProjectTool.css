@@ -4,7 +4,7 @@
 
 .header {
     padding-left: 30px;
-    background-color: rgb(165, 234, 234);
+    background-color: #668053;
     height: 50px;
     border-radius: 15px;
 
@@ -36,7 +36,7 @@
 }
 
 .create-button button {
-    background-color: #87DEB7;
+    background-color: #998364;
     border-radius: 10px;
     border-width: 1px;
     font-size: 20px;

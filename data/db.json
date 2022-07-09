@@ -1,33 +1,6 @@
 {
   "tasks": [
     {
-      "title": "Create UI",
-      "des": "Create a basic UI",
-      "status": "SB1",
-      "date": "8/7/2022",
-      "deadline": "12/2/3",
-      "projectName": "Make an app",
-      "id": 1
-    },
-    {
-      "title": "Create Plan",
-      "des": "Create the plan for the app and share it with others",
-      "status": "completed",
-      "projectName": "Make an app",
-      "date": "8/7/2022",
-      "deadline": "12/2/3",
-      "id": 2
-    },
-    {
-      "title": "Obtain Funding",
-      "des": "Obtain funding for the app development",
-      "status": "SB1",
-      "date": "8/7/2022",
-      "deadline": "12/2/3",
-      "projectName": "Make an app",
-      "id": 3
-    },
-    {
       "title": "Test Task 1",
       "des": "Test Task 1",
       "status": "TB1",
@@ -46,40 +19,40 @@
       "id": 6
     },
     {
-      "title": "Check with Customer",
-      "des": "Check with customer",
+      "title": "Code Project",
+      "des": "Add redux to the project",
       "status": "wer",
       "projectName": "Make an app",
-      "date": "8/7/2022",
-      "deadline": "12/2/3",
-      "id": 7
+      "deadline": "8/1/2022",
+      "id": 8,
+      "date": "7/9/2022"
     },
     {
-      "title": "Untitled Task",
-      "des": "No Description",
-      "status": "wer",
-      "projectName": "Make an app",
-      "date": "8/7/2022",
-      "deadline": "",
-      "id": 8
-    },
-    {
-      "title": "Lunch",
-      "des": "Eat Lunch",
-      "status": "wer",
-      "projectName": "Make an app",
-      "date": "8/7/2022",
-      "deadline": "12/2/3",
-      "id": 9
-    },
-    {
-      "title": "Untitled Task",
-      "des": "No Description",
+      "title": "Talk to the customer",
+      "des": "Talk to the customer about requirements",
       "status": "SB1",
       "projectName": "Make an app",
-      "date": "8/7/2022",
-      "deadline": "",
-      "id": 10
+      "deadline": "1/5/2023",
+      "id": 9,
+      "date": "9/7/2022"
+    },
+    {
+      "title": "Plan the app",
+      "des": "Plan the outline for the app",
+      "status": "completed",
+      "projectName": "Make an app",
+      "deadline": "7/1/2022",
+      "id": 10,
+      "date": "7/9/2022"
+    },
+    {
+      "title": "Make UI",
+      "des": "Make a UI, make sure to add matching colors",
+      "status": "SB1",
+      "projectName": "Make an app",
+      "deadline": "1/23/2023",
+      "id": 11,
+      "date": "7/9/2022"
     }
   ],
   "boards": [
@@ -135,9 +108,28 @@
   ],
   "comments": [
     {
-      "parent": 4,
-      "text": "",
+      "parent": 8,
+      "text": "Added the first reducer",
+      "date": "7/9/2022   18:19",
       "id": 1
+    },
+    {
+      "parent": 8,
+      "text": "Added the first action",
+      "date": "7/9/2022   18:19",
+      "id": 2
+    },
+    {
+      "parent": 9,
+      "text": "Made a list of ideas for the customer",
+      "date": "7/9/2022   18:19",
+      "id": 3
+    },
+    {
+      "parent": 11,
+      "text": "I got it",
+      "date": "7/9/2022   18:19",
+      "id": 4
     }
   ]
 }

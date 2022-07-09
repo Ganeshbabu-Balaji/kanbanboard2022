@@ -14,6 +14,9 @@ export const DELETE_COMMENT_FROM_SERVER_ACTION = 'DELETE_COMMENT_FROM_SERVER';
 const JSON_SERVER = 'http://localhost:8000/comments';
 //Creates the definitions for all the functions
 
+const currentDate = new Date();
+const date = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}   ${currentDate.getHours()}:${currentDate.getMinutes()<10?'0':''}${currentDate.getMinutes()}`;
+
 export const createAddCommentAction = (parent, text) => ({
     type: CREATE_COMMENT_ACTION,
     parent: parent,
@@ -26,11 +29,13 @@ export const createDeleteCommentAction = (id) => ({
 
 });
 
-export const createEditCommentAction = (id, parent, text) => ({
+export const createEditCommentAction = (id, parent, text, date) => ({
     type: EDIT_COMMENT_ACTION,
+    
     id: id,
     parent: parent,
     text: text,
+    date: date,
 })
 
 
@@ -78,9 +83,10 @@ export const uploadComment = (parent, text) => {
             type: CREATE_COMMENT_ACTION,
             parent: parent,
             text: text,
+            date: date
         })
 
-        const response = Axios.post('http://localhost:8000/comments', { parent: parent, text: text })
+        const response = Axios.post('http://localhost:8000/comments', { parent: parent, text: text, date: date })
 
     }
 
@@ -100,18 +106,21 @@ export const deleteCommentFromServer = (id) => {
     }
 }
 
-export const editCommentOnServer = (id, parent, text) => {
+export const editCommentOnServer = (id, parent, text, date) => {
     return async (dispatch, setState) => {
 
         console.log('Comment edited on server')
 
         dispatch({
             type: EDIT_COMMENT_ACTION,
+
+            id: id,
             parent: parent,
             text: text,
+            date: date
 
         })
-        const response = Axios.patch(`${JSON_SERVER}/${id}`, {parent: parent, text: text})
+        const response = Axios.patch(`${JSON_SERVER}/${id}`, {id: id, parent: parent, text: text, date: date})
 
     }
 }

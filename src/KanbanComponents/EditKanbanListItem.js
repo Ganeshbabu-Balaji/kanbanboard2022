@@ -6,7 +6,6 @@ export const EditKanbanListItem = ({ isTitleBeingEdited, toggleEdit, onEditBoard
     const [changedItem, setChangedItem] = useState('')
     
     const saveBoardHandler = (boardId, title, des, status) => { //Saves the task then switches it back into the original component
-        console.log('Board Saved');
         onEditBoard(boardId, title, des, status, projectTitle);
         toggleEdit(false);
     }

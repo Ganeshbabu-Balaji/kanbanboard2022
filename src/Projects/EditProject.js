@@ -6,7 +6,6 @@ export const EditProject = ({ isTitleBeingEdited, toggleEdit, onEditProject, cli
     const [changedItem, setChangedItem] = useState('')
 
     const saveProjectHandler = (projectId, title, des) => { //Saves the task then switches it back into the original component
-        console.log('Board Saved');
         onEditProject(projectId, title, des, project.color);
         toggleEdit(false);
     }

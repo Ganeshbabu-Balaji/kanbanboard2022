@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { EditTaskListItem } from './EditTaskListItem';
-import { Comment } from '../OtherComponents/Comment';
-import { CommentForm } from '../OtherComponents/CommentForm';
+import { Comment } from '../Comments/Comment';
+import { CommentForm } from '../Comments/CommentForm';
 
 import '../css-files/DetailedTaskPopup.css';
 
@@ -19,15 +19,14 @@ export const DetailedTaskPopup = ({
     onEditComment
 
 }) => {
-    console.log(typeof (onCreateComment))
 
     const [isTitleBeingEdited, setTitleEditStatus] = useState(false);
     const [isDesBeingEdited, setDesEditStatus] = useState(false);
+    const [isDeadlineBeingEdited, setDeadlineEditStatus] = useState(false);
 
     const onSaveTaskWithChange = (id, title, des, newStatus) => {
         onChangeStatus(id, title, des, newStatus, projectTitle);
         setEditStatus(false);
-        console.log(typeof (projectTitle))
     }
 
     const statusChangeButtons = boardList.map((button) => {
@@ -38,7 +37,7 @@ export const DetailedTaskPopup = ({
     })
 
     const filteredCommentList = commentList.filter(elem => elem.parent === task.id);
-    const comments = [].concat(filteredCommentList) //Boards 
+    const comments = [].concat(filteredCommentList) 
         .sort((a, b) => a.id > b.id ? 1 : -1)
         .map((comment, i) =>
             <Comment key={i}
@@ -48,6 +47,8 @@ export const DetailedTaskPopup = ({
                 onDeleteComment={onDeleteComment}
                 onEditComment={onEditComment}
                 id={comment.id}
+                date={comment.date}
+                parent={comment.parent}
             />
 
         );
@@ -74,8 +75,8 @@ export const DetailedTaskPopup = ({
                                 <EditTaskListItem isTitleBeingEdited={true} toggleEdit={setTitleEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem='Edit Title' projectTitle={projectTitle} />
                             }
                         </div>
-                        <div>
-                            <button onClick={() => setEditStatus(false)}>x</button>
+                        <div  className='close-button'>
+                            <button style={{fontSize: '15px', borderRadius: '100px'}} onClick={() => setEditStatus(false)}>x</button>
 
                         </div>
 
@@ -89,7 +90,7 @@ export const DetailedTaskPopup = ({
                                 <p style={{ backgroundColor: 'green' }} onClick={() => setDesEditStatus(true)}>{task.des}</p>
                             }
                             {isDesBeingEdited == true &&
-                                <EditTaskListItem isTitleBeingEdited={false} toggleEdit={setDesEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem='Edit Description' projectTitle={projectTitle} />
+                                <EditTaskListItem isDesBeingEdited={true} toggleEdit={setDesEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem='Edit Description' projectTitle={projectTitle} />
                             }
 
                         </div>
@@ -101,7 +102,14 @@ export const DetailedTaskPopup = ({
                             </div>
                             <div className='date-column'>
                                 <p>Deadline:</p>
-                                <p>{task.deadline}</p>
+                                {isDeadlineBeingEdited === false &&
+
+                                    <p onClick={() => setDeadlineEditStatus(true)}>{task.deadline}</p>
+
+                                }
+                                {isDeadlineBeingEdited === true &&
+                                    <EditTaskListItem isDeadlineBeingEdited={true} toggleEdit={setDeadlineEditStatus} onSaveEdit={onSaveEdit} task={task} clickedItem={'Edit deadline'} projectTitle={projectTitle}/>
+                                }
                             </div>
                         </div>
                         <div className='body-comments'>
